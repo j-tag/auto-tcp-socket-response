@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
@@ -26,19 +26,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+set(CMAKE_AUTOUIC ON)
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS forms/ )
+
+set(ALL_FILES
+    src/main.cpp
+    includes/MainWindow.hpp
+    src/MainWindow.cpp
+    includes/TcpSocketClient.hpp
+    src/TcpSocketClient.cpp
+    forms/MainWindow.ui
+    )
+
 if(ANDROID)
   add_library(tcp-socket-tester SHARED
-    main.cpp
-    MainWindow.cpp
-    MainWindow.hpp
-    MainWindow.ui
+    ${ALL_FILES}
   )
 else()
   add_executable(tcp-socket-tester
-    main.cpp
-    MainWindow.cpp
-    MainWindow.hpp
-    MainWindow.ui
+    ${ALL_FILES}
   )
 endif()
 
