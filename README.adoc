@@ -1,0 +1,34 @@
+= Auto TCP Socket Response
+Hesam Gholami <hesamgholami@yahoo.com>
+v1.0, 2020-05-04
+
+++++
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
+++++
+:icons: font
+:experimental: true
+
+image::misc/sample-images/automatic-tcp-socket-main.png[Example Request and Response]
+
+
+== Quick Start
+
+Using this project you can easily set automatic response for a certain request using TCP socket protocol.
+
+This application is written in Qt, so first you need to install required Qt libraries to use it.
+
+=== Qt
+
+This project is written in _Qt_, so you need to install Qt to run this project.
+
+https://qt.io
+
+You don't need any other tools to run this project. Just open up `CmakeLists.txt` in *Qt Creator* and run the project.
+  
+== Contributing
+
+If you enjoyed this project, please consider contributing to it and make it better.
+
+And please don’t forget to give a star to this project.
+
+Thank you and happy coding! 
