@@ -52,7 +52,7 @@ void TcpSocketClient::onBytesWritten(qint64 bytes)
 
 void TcpSocketClient::onReadyRead()
 {
-    const char *data = this->m_tcpSocket.readAll();
+    const QByteArray data = this->m_tcpSocket.readAll();
 
     QString strData(data);
     const auto trimmedData = strData.trimmed();
