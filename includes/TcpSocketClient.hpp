@@ -28,7 +28,7 @@ private slots:
 private:
     QTcpSocket m_tcpSocket;
     QString m_strRequest;
-    const char* m_charResponse;
+    QByteArray m_byteArrayResponse;
 };
 
 #endif // TCPSOCKETCLIENT_HPP

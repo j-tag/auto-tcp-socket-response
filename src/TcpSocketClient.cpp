@@ -23,13 +23,14 @@ void TcpSocketClient::disconnectFromHost()
 void TcpSocketClient::setAutomaticRequestResponse(const QString &strRequest, const QString &strResponse)
 {
     this->m_strRequest = strRequest;
-    this->m_charResponse = strResponse.toUtf8();
+    this->m_byteArrayResponse = strResponse.toUtf8();
 }
 
 void TcpSocketClient::sendMessage(const char *data)
 {
     this->m_tcpSocket.write(data);
     this->m_tcpSocket.flush();
+    as.log(data);
 }
 
 void TcpSocketClient::onConnected()
@@ -59,7 +60,7 @@ void TcpSocketClient::onReadyRead()
 
     // Handle automatic response
     if(this->m_strRequest == trimmedData) {
-        this->sendMessage(this->m_charResponse);
+        this->sendMessage(this->m_byteArrayResponse);
     }
 }
 
