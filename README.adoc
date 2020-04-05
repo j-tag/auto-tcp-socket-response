@@ -23,7 +23,7 @@ This project is written in _Qt_, so you need to install Qt to run this project.
 
 https://qt.io
 
-You don't need any other tools to run this project. Just open up `CmakeLists.txt` in *Qt Creator* and run the project.
+You don't need any other tools to run this project. Just open up `CMakeLists.txt` in *Qt Creator* and run the project.
   
 == Contributing
 
