@@ -1,8 +1,6 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
-#include "TcpSocketClient.hpp"
-
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -18,10 +16,15 @@ public:
     ~MainWindow();
 
 private slots:
+    void onLogMessage(const char* data);
+    void onConnected();
+    void onDisconnected();
     void on_pushButton_connection_clicked();
 
 private:
+    void loadSettings();
+
+private:
     Ui::MainWindow *ui;
-    TcpSocketClient m_tcpClient;
 };
 #endif // MAINWINDOW_HPP

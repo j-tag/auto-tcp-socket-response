@@ -36,6 +36,8 @@ set(ALL_FILES
     src/MainWindow.cpp
     includes/TcpSocketClient.hpp
     src/TcpSocketClient.cpp
+    includes/AutoSocket.hpp
+    src/AutoSocket.cpp
     forms/MainWindow.ui
     )
 
