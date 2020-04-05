@@ -20,6 +20,18 @@ void TcpSocketClient::disconnectFromHost()
     this->m_tcpSocket.disconnectFromHost();
 }
 
+void TcpSocketClient::setAutomaticRequestResponse(const QString &strRequest, const QString &strResponse)
+{
+    this->m_strRequest = strRequest;
+    this->m_charResponse = strResponse.toUtf8();
+}
+
+void TcpSocketClient::sendMessage(const char *data)
+{
+    this->m_tcpSocket.write(data);
+    this->m_tcpSocket.flush();
+}
+
 void TcpSocketClient::onConnected()
 {
     emit this->connected();
@@ -34,13 +46,21 @@ void TcpSocketClient::onDisconnected()
 
 void TcpSocketClient::onBytesWritten(qint64 bytes)
 {
-    as.log("Written " + QString::number(bytes) + " to TCP socket.");
+    as.log("Written " + QString::number(bytes) + " bytes to TCP socket.");
 }
 
 void TcpSocketClient::onReadyRead()
 {
     const char *data = this->m_tcpSocket.readAll();
-    as.log(data);
+
+    QString strData(data);
+    const auto trimmedData = strData.trimmed();
+    as.log(trimmedData);
+
+    // Handle automatic response
+    if(this->m_strRequest == trimmedData) {
+        this->sendMessage(this->m_charResponse);
+    }
 }
 
 void TcpSocketClient::onError(QAbstractSocket::SocketError /*error*/)

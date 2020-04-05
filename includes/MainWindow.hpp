@@ -21,6 +21,8 @@ private slots:
     void onDisconnected();
     void on_pushButton_connection_clicked();
 
+    void on_pushButton_response_save_clicked();
+
 private:
     void loadSettings();
 

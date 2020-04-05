@@ -76,7 +76,25 @@ void MainWindow::loadSettings()
     QSettings settings(this);
     const auto ip = settings.value("ip").toString();
     const auto port = settings.value("port").toString();
+    const auto request = settings.value("request").toString();
+    const auto response = settings.value("response").toString();
 
     this->ui->lineEdit_ip->setText(ip);
     this->ui->lineEdit_port->setText(port);
+    this->ui->lineEdit_request->setText(request);
+    this->ui->lineEdit_response->setText(response);
+
+    as.getTcpSocketClient()->setAutomaticRequestResponse(request, response);
+}
+
+void MainWindow::on_pushButton_response_save_clicked()
+{
+    const auto request = this->ui->lineEdit_request->text();
+    const auto response = this->ui->lineEdit_response->text();
+
+    as.getTcpSocketClient()->setAutomaticRequestResponse(request, response);
+
+    QSettings settings(this);
+    settings.setValue("request", request);
+    settings.setValue("response", response);
 }

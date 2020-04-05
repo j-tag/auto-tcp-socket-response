@@ -11,6 +11,8 @@ public:
     explicit TcpSocketClient(QObject *parent = nullptr);
     void connectToHost(const QString &strAddress, quint16 port);
     void disconnectFromHost();
+    void setAutomaticRequestResponse(const QString &strRequest, const QString &strResponse);
+    void sendMessage(const char *data);
 
 signals:
     void connected();
@@ -25,6 +27,8 @@ private slots:
 
 private:
     QTcpSocket m_tcpSocket;
+    QString m_strRequest;
+    const char* m_charResponse;
 };
 
 #endif // TCPSOCKETCLIENT_HPP
