@@ -7,26 +7,27 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
+ Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+ public:
+  MainWindow(QWidget *parent = nullptr);
+  ~MainWindow();
 
-private slots:
-    void onLogMessage(const char* data);
-    void onConnected();
-    void onDisconnected();
-    void on_pushButton_connection_clicked();
+ private slots:
 
-    void on_pushButton_response_save_clicked();
+  void onLogMessage(const char *data);
+  void onConnected();
+  void onDisconnected();
+  void on_pushButton_connection_clicked();
+  void on_pushButton_response_save_clicked();
+  void on_checkBox_hex_toggled(bool checked);
 
-private:
-    void loadSettings();
+ private:
+  void loadSettings();
 
-private:
-    Ui::MainWindow *ui;
+ private:
+  Ui::MainWindow *ui;
 };
+
 #endif // MAINWINDOW_HPP

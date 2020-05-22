@@ -6,20 +6,19 @@
 
 #include "includes/TcpSocketClient.hpp"
 
-class AutoSocket : public QObject
-{
-    Q_OBJECT
-public:
-    explicit AutoSocket(QObject *parent = nullptr);
-    void log(const char *data);
-    void log(const QString &strData);
-    TcpSocketClient *getTcpSocketClient() const;
+class AutoSocket : public QObject {
+ Q_OBJECT
+ public:
+  explicit AutoSocket(QObject *parent = nullptr);
+  void log(const char *data);
+  void log(const QString &strData);
+  TcpSocketClient *getTcpSocketClient() const;
 
-signals:
-    void logMessage(const char *data);
+ signals:
+  void logMessage(const char *data);
 
-private:
-    QScopedPointer<TcpSocketClient> m_pTcpSocketClient;
+ private:
+  QScopedPointer<TcpSocketClient> m_pTcpSocketClient;
 };
 
 // Main app object
